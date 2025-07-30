@@ -6,6 +6,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
+    <style>
+    body{
+    background-color: rgb(251, 255, 251);
+}
+.oo{
+    color: rgb(255, 156, 172);
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 65px;
+}
+
+.ii {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+
+.yy {
+    width: 120px;
+    height: 60px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(16, 111, 16);
+}
+
+.yy button {
+    background-color: inherit;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.yy button:hover {
+    background-color: rgb(255, 174, 174);
+    color: rgb(0, 0, 0);
+    box-shadow: 0 0 10px white;
+    transform: scale(1.1);
+}
+
+
+.nn {
+    width: 120px;
+    height: 60px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 0, 0);
+}
+
+.nn button {
+    background-color: inherit;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.nn button:hover {
+    background-color: rgb(255, 174, 174);
+    color: rgb(0, 0, 0);
+    box-shadow: 0 0 10px white;
+    transform: scale(1.1);
+}
+
+.explode {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(20);
+    transition: transform 1s ease-in-out;
+    z-index: 999;
+}
+
+.video {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.video img {
+    max-width: 300px;
+    border-radius: 10px;
+    background-color: rgb(255, 232, 236);
+}
+.messageConainer {  
+    position: absolute; 
+    left: calc(50% + 150px); 
+    top: 50%;
+    transform: translateY(-50%);
+    color: red;  
+    background-color: black; 
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+}
+</style>
     <body>
         <div class="oo">
     <p> Will You Be My Valentine?</p>
@@ -22,6 +136,46 @@
 <div class="video">
     <img src="c:\Users\hi\Downloads\Capoo Bugcat GIF - Capoo Bugcat Kisses - Discover & Share GIFs.gif" alt="cute gif" />
 </div>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const messageContainer = document.getElementById("messageContainer");
+
+    let noClickCount = 0;
+
+    noBtn.addEventListener("click", () => {
+        noClickCount++;
+
+       
+        const message = document.createElement("p");
+        message.classList.add("message");
+        message.textContent = `tôi biết heo con khong như vậy mà`;
+        messageContainer.appendChild(message);
+
+       
+        const scale = 1 + noClickCount * 0.2;
+        yesBtn.style.transform = `scale(${scale})`;
+
+        if (noClickCount >= 5) {
+           
+            noBtn.style.opacity = 0;
+            noBtn.disabled = true;
+
+           
+            setTimeout(() => {
+                yesBtn.classList.add("explode");
+            }, 500); 
+        }
+    });
+
+    yesBtn.addEventListener("click", () => {
+        
+        setTimeout(() => {
+            window.location.href = "cá2.html"; 
+        }, 1000); 
+    });
+});
+    </script>
     </body>
 </html>
